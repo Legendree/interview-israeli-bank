@@ -1,0 +1,13 @@
+.albumlist_container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1200px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .albumlist_container {
+    width: 100%;
+  }
+}
