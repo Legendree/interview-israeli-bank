@@ -1,7 +1,7 @@
 .search_container {
   margin-top: 35px;
   display: flex;
-  width: 940px;
+  width: 1000px;
 }
 
 .search_input {
@@ -39,7 +39,7 @@
   outline: none;
 }
 
-@media only screen and (max-width: 940px) {
+@media only screen and (max-width: 1000px) {
   .search_container {
     width: calc(100% - 20px);
   }

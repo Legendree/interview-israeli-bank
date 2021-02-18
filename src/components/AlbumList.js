@@ -1,26 +1,35 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import '../styles/components/AlbumList.css';
 import Album from './Album';
 
-export default function AlbumList({ data = [] }) {
+export default function AlbumList() {
+  const state = useSelector((state) => state);
+
   return (
     <div className='albumlist_container'>
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
-      <Album />
+      {state.albums.isFetching ? (
+        <>
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+          <Album />
+        </>
+      ) : (
+        state.albums.data.map((album) => <Album key={album.id} />)
+      )}
     </div>
   );
 }
