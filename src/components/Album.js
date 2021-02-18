@@ -17,7 +17,7 @@ export default function Album({ img, title = 'album_title' }) {
           borderRadius: 5,
         }}
       />
-      <span>{title}</span>
+      <span className='album_title'>{title}</span>
     </div>
   );
 }

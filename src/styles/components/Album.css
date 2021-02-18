@@ -7,6 +7,24 @@
   border-radius: 5px;
 }
 
+.album_container:hover {
+  cursor: pointer;
+}
+
+.album_title {
+  position: absolute;
+  bottom: 0;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 24px;
+  color: white;
+  text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+  transition: 200ms ease-in-out;
+}
+.album_container:hover .album_title {
+  transform: translateX(7px);
+}
+
 @media only screen and (max-width: 660px) {
   .album_container {
     width: 100%;
