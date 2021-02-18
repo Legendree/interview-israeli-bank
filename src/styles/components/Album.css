@@ -3,6 +3,8 @@
   height: 180px;
   background-color: black;
   margin: 10px;
+  position: relative;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 660px) {
