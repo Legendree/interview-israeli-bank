@@ -3,13 +3,10 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import { authorize } from './api/Authorization';
 import Login from './pages/Login';
+import { useSelector } from 'react-redux';
 
 export default function App() {
-  const [isLogged, setIsLogged] = useState(false);
-
-  useEffect(() => {
-    window.location.replace(authorize());
-  }, []);
+  const state = useSelector((state) => state);
 
   return (
     <Switch>

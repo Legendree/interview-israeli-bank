@@ -1,16 +1,31 @@
 import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { authorize, getToken } from '../api/Authorization';
 
-import AlbumList from '../components/AlbumList';
 import Layout from '../components/Layout';
-import Search from '../components/Search';
+import { setLoggedIn } from '../store/actions/userActions';
 
 export default function Login() {
-  const query = useLocation();
+  const dispatch = useDispatch();
+  const query = new URLSearchParams(useLocation().search);
+
+  const fetchToken = async (code) => {
+    const token = await getToken(code);
+    if (token) {
+      dispatch(setLoggedIn({ isLogged: true }));
+      window.location.replace('/');
+    }
+  };
 
   useEffect(() => {
-    console.log(query);
+    const code = query.get('code');
+    if (code) {
+      console.log(code);
+      fetchToken(code);
+    } else window.location.replace(authorize());
   }, []);
+
   return (
     <Layout>
       <span>Logging you in... please wait</span>
