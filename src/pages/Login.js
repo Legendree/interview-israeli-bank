@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import AlbumList from '../components/AlbumList';
 import Layout from '../components/Layout';
 import Search from '../components/Search';
 
-import { fetchAlbums } from '../api/Albums';
+export default function Login() {
+  const query = useLocation();
 
-export default function Home() {
+  useEffect(() => {
+    console.log(query);
+  }, []);
   return (
     <Layout>
-      <Search />
-      <AlbumList />
+      <span>Logging you in... please wait</span>
     </Layout>
   );
 }
