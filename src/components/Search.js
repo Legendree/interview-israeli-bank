@@ -3,6 +3,7 @@ import React from 'react';
 import '../styles/components/Search.css';
 
 export default function Search({
+  onClick,
   value = '',
   onChange = () => console.log('no function specified yet'),
 }) {
@@ -15,7 +16,7 @@ export default function Search({
         value={value}
         onChange={onChange}
       />
-      <button className='search_btn'>
+      <button onClick={onClick} className='search_btn'>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='-1 0 136 136.219'

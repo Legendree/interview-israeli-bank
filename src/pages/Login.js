@@ -18,7 +18,7 @@ export default function Login() {
       window.localStorage.setItem('token', token.access_token);
       window.localStorage.setItem(
         'token_experation',
-        `${Date.now() + 3600000}`
+        `${Date.now() + 1 * 60 * 60 * 1000}`
       );
 
       window.location.replace('/');

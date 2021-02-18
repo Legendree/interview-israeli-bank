@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/components/Album.css';
 
-export default function Album({ img, title = '', artist = 'sdsds' }) {
+export default function Album({ img, title = '', artist = '' }) {
   return (
     <div className='album_container'>
       <div

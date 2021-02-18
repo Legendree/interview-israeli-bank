@@ -36,17 +36,22 @@ export default function Home() {
   };
 
   useEffect(() => {
-    //if (canUseApp) {
-    //  window.location.replace('/login');
-    //}
+    if (canUseApp) {
+      window.location.replace('/login');
+    }
     getData(page, searchValue);
   }, [page, searchValue]);
 
   return (
     <Layout>
       <Search
+        onClick={() => {
+          setPage(0);
+          if (searchValue.length > 0) getData(page, searchValue);
+        }}
         value={searchValue}
         onChange={(e) => {
+          setPage(0);
           setSearchValue(e.target.value);
         }}
       />

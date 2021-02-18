@@ -1,7 +1,7 @@
 .album_container {
   width: 320px;
   height: 180px;
-  background-color: black;
+  background-color: rgb(238, 238, 238);
   margin: 10px;
   position: relative;
   border-radius: 5px;
