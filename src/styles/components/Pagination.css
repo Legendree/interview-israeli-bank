@@ -1,0 +1,12 @@
+.pagination_container {
+  margin: 15px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination_label {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0px 20px;
+}

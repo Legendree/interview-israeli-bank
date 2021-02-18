@@ -14,17 +14,21 @@ export default function Login() {
     const token = await getToken(code);
     if (token) {
       dispatch(setLoggedIn({ isLogged: true }));
+
       window.localStorage.setItem('token', token.access_token);
+      window.localStorage.setItem(
+        'token_experation',
+        `${Date.now() + 3600000}`
+      );
+
       window.location.replace('/');
     }
   };
 
   useEffect(() => {
     const code = query.get('code');
-    if (code) {
-      console.log(code);
-      fetchToken(code);
-    } else window.location.replace(authorize());
+    if (code) fetchToken(code);
+    else window.location.replace(authorize());
   }, []);
 
   return (

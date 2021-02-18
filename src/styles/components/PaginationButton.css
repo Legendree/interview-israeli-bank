@@ -1,0 +1,15 @@
+.pagination_button {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: black;
+  border-radius: 10px;
+}
+
+.pagination_button:hover {
+  cursor: pointer;
+}
+
+.pagination_button:focus {
+  outline: none;
+}
