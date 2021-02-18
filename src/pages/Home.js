@@ -9,18 +9,24 @@ import { useDispatch } from 'react-redux';
 import { setDoneFetching } from '../store/actions/albumsActions';
 import { canUseApp } from '../utils/Helpers';
 import Pagination from '../components/Pagination';
+import { getItemsBySearch } from '../api/Search';
 
 export default function Home() {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
-  const getAlbums = async (page = 0) => {
-    const data = await getAllNewReleases(
-      page,
-      window.localStorage.getItem('token')
-    );
+  const getData = async (page = 0, query) => {
+    const data =
+      searchValue.length > 0
+        ? await getItemsBySearch(
+            query,
+            window.localStorage.getItem('token'),
+            page
+          )
+        : await getAllNewReleases(page, window.localStorage.getItem('token'));
 
     console.log(data);
 
@@ -33,15 +39,20 @@ export default function Home() {
     //if (canUseApp) {
     //  window.location.replace('/login');
     //}
-    getAlbums(page);
-  }, [page]);
+    getData(page, searchValue);
+  }, [page, searchValue]);
 
   return (
     <Layout>
-      <Search />
+      <Search
+        value={searchValue}
+        onChange={(e) => {
+          setSearchValue(e.target.value);
+        }}
+      />
       <AlbumList />
       <Pagination
-        currentPage={page}
+        currentPage={page + 1}
         onClickBack={() => setPage((currPage) => currPage - 1)}
         onClickForward={() => setPage((currPage) => currPage + 1)}
         isEnd={isEnd}
