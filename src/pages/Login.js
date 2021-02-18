@@ -5,6 +5,7 @@ import { authorize, getToken } from '../api/Authorization';
 
 import Layout from '../components/Layout';
 import { setLoggedIn } from '../store/actions/userActions';
+import { needAuthorize } from '../utils/Helpers';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -26,6 +27,7 @@ export default function Login() {
   };
 
   useEffect(() => {
+    if (!needAuthorize) window.history.back();
     const code = query.get('code');
     if (code) fetchToken(code);
     else window.location.replace(authorize());

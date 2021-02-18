@@ -7,7 +7,7 @@ import Search from '../components/Search';
 import { getAllNewReleases } from '../api/Albums';
 import { useDispatch } from 'react-redux';
 import { setDoneFetching } from '../store/actions/albumsActions';
-import { canUseApp } from '../utils/Helpers';
+import { needAuthorize } from '../utils/Helpers';
 import Pagination from '../components/Pagination';
 import { getItemsBySearch } from '../api/Search';
 
@@ -36,7 +36,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    if (canUseApp) {
+    if (needAuthorize) {
       window.location.replace('/login');
     }
     getData(page, searchValue);
