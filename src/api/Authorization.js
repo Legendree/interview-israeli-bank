@@ -1,5 +1,4 @@
 import axios from 'axios';
-import querystring from 'querystring';
 
 export const authorize = (
   client_id = '4054859e016f4b9bbe0f6aebb4a2a3b0',
@@ -31,20 +30,3 @@ export const getToken = async (code) => {
 
   return response.data;
 };
-
-/*
- const response = await axios.post(
-    'https://accounts.spotify.com/api/token',
-    data,
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${btoa(
-          '4054859e016f4b9bbe0f6aebb4a2a3b0:3b964c371e394c3fb3a981a3829ead8a'
-        )}`,
-      },
-    }
-  );
-
-
-*/

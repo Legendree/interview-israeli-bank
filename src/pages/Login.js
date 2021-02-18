@@ -14,6 +14,7 @@ export default function Login() {
     const token = await getToken(code);
     if (token) {
       dispatch(setLoggedIn({ isLogged: true }));
+      window.localStorage.setItem('token', token.access_token);
       window.location.replace('/');
     }
   };
