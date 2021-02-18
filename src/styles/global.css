@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800;900&display=swap');
+
+body {
+  font-size: 14px;
+  color: white;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  color: white;
+  background: #263fdb;
+}
+
+::selection {
+  color: white;
+  background: #263fdb;
+}
+
+b {
+  font-weight: bold;
+}
+
+button {
+  font-family: 'Rubik', sans-serif;
+}
+
+input {
+  font-family: 'Rubik', sans-serif;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='button'] {
+  -webkit-appearance: none;
+}
+
+input[type=file], /* FF, IE7+, chrome (except button) */
+input[type=file]::-webkit-file-upload-button {
+  /* chromes and blink button */
+  cursor: pointer;
+}
+
+textarea {
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+}
+.shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(to right, #eff1f3 12%, #e2e2e2 25%, #eff1f3 36%);
+  background-size: 1000px 100%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
