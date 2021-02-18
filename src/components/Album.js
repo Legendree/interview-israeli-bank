@@ -2,7 +2,7 @@ import React from 'react';
 
 import '../styles/components/Album.css';
 
-export default function Album({ img, title = '' }) {
+export default function Album({ img, title = '', artist = 'sdsds' }) {
   return (
     <div className='album_container'>
       <div
@@ -18,6 +18,7 @@ export default function Album({ img, title = '' }) {
         }}
       />
       <span className='album_title'>{title}</span>
+      <span className='artist_title'>{artist}</span>
     </div>
   );
 }

@@ -29,7 +29,12 @@ export default function AlbumList() {
         </>
       ) : (
         state.albums.data.map((album) => (
-          <Album key={album.id} img={album.images[0].url} title={album.name} />
+          <Album
+            key={album.id}
+            img={album.images[0].url}
+            title={album.name}
+            artist={album.artists[0].name}
+          />
         ))
       )}
     </div>
