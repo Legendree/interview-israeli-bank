@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { authorize, getToken } from '../api/Authorization';
 
-import Layout from '../components/Layout';
+import '../styles/pages/Login.css';
 
 import { needAuthorize } from '../utils/Helpers';
 
 export default function Login() {
   const query = new URLSearchParams(useLocation().search);
+
+  const [hasCode, setHasCode] = useState(false);
 
   const fetchToken = async (code) => {
     const token = await getToken(code);
@@ -27,13 +29,19 @@ export default function Login() {
   useEffect(() => {
     if (!needAuthorize) window.history.back();
     const code = query.get('code');
-    if (code) fetchToken(code);
-    else window.location.replace(authorize());
+    if (code) {
+      setHasCode(true);
+      fetchToken(code);
+    } else window.location.replace(authorize());
   }, []); // eslint-disable-line
 
   return (
-    <Layout>
-      <span>Logging you in... please wait</span>
-    </Layout>
+    <div className='login_container'>
+      <span className='login_label'>
+        {!hasCode
+          ? 'Redirecting to login via Spotify...'
+          : 'Logging you in... please wait'}
+      </span>
+    </div>
   );
 }
