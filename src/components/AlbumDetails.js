@@ -9,7 +9,7 @@ export default function AlbumDetails({
   isFetching = false,
 }) {
   return (
-    <div className='album_details_conatiner'>
+    <div className='album_details_container'>
       {isFetching ? (
         <div className='album_details_img_placeholder shimmer' />
       ) : (
