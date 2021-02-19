@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { authorize, getToken } from '../api/Authorization';
 
 import Layout from '../components/Layout';
-import { setLoggedIn } from '../store/actions/userActions';
+
 import { needAuthorize } from '../utils/Helpers';
 
 export default function Login() {
-  const dispatch = useDispatch();
   const query = new URLSearchParams(useLocation().search);
 
   const fetchToken = async (code) => {
     const token = await getToken(code);
-    if (token) {
-      dispatch(setLoggedIn({ isLogged: true }));
 
+    console.log(token);
+    if (token) {
       window.localStorage.setItem('token', token.access_token);
       window.localStorage.setItem(
         'token_experation',
-        `${Date.now() + 1 * 60 * 60 * 1000}`
+        `${Date.now() + 60 * 60 * 1000}` // Setting token experation to one hour
       );
 
       window.location.replace('/');

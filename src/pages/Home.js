@@ -39,6 +39,7 @@ export default function Home() {
     if (needAuthorize) {
       window.location.replace('/login');
     }
+
     getData(page, searchValue);
   }, [page, searchValue]);
 
