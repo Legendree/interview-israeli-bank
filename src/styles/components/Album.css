@@ -36,7 +36,7 @@
   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.8);
 }
 
-@media only screen and (max-width: 660px) {
+@media only screen and (max-width: 695px) {
   .album_container {
     width: 100%;
     padding-top: 56.25%;
