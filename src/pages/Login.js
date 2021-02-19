@@ -29,7 +29,7 @@ export default function Login() {
     const code = query.get('code');
     if (code) fetchToken(code);
     else window.location.replace(authorize());
-  }, []);
+  }, []); // eslint-disable-line
 
   return (
     <Layout>

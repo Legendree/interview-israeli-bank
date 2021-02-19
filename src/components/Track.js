@@ -4,7 +4,6 @@ import '../styles/components/Track.css';
 import { convertToTime } from '../utils/Helpers';
 
 export default function Track({
-  img,
   trackName = '',
   trackDuration,
   trackNumber,

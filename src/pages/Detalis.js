@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setData, setAlbumData } from '../store/actions/tracksActions';
 import Track from '../components/Track';
 import Pagination from '../components/Pagination';
+import { needAuthorize } from '../utils/Helpers';
 
 export default function Details(props) {
   const dispatch = useDispatch();
@@ -25,7 +26,6 @@ export default function Details(props) {
       window.localStorage.getItem('token')
     );
 
-    console.log(data);
     setIsEnd(data.total - page * 15 < 15);
     dispatch(setData(data.items));
     window.scrollTo(0, 0);
@@ -48,13 +48,17 @@ export default function Details(props) {
   };
 
   useEffect(() => {
+    if (needAuthorize) {
+      window.location.replace('/login');
+    }
+
     getTracks();
     getAlbum();
-  }, []);
+  }, []); // eslint-disable-line
 
   useEffect(() => {
     getTracks(page);
-  }, [page]);
+  }, [page]); // eslint-disable-line
 
   return (
     <Layout>

@@ -30,8 +30,6 @@ export default function Home() {
           )
         : await getAllNewReleases(page, window.localStorage.getItem('token'));
 
-    console.log(data);
-
     setIsEnd(data.albums.total - page * 15 < 15);
     dispatch(setDoneFetching({ isFetching: false, data: data.albums.items }));
     window.scrollTo(0, 0);
@@ -43,20 +41,24 @@ export default function Home() {
     }
 
     getData(page, searchValue);
-  }, [page, searchValue]);
+  }, [page, searchValue]); // eslint-disable-line
+
+  const handleSearchChange = (e) => {
+    setPage(0);
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    setPage(0);
+    if (searchValue.length > 0) getData(page, searchValue);
+  };
 
   return (
     <Layout>
       <Search
-        onClick={() => {
-          setPage(0);
-          if (searchValue.length > 0) getData(page, searchValue);
-        }}
+        onClick={handleSearchClick}
         value={searchValue}
-        onChange={(e) => {
-          setPage(0);
-          setSearchValue(e.target.value);
-        }}
+        onChange={handleSearchChange}
       />
       <Grid>
         {state.albums.isFetching ? (
