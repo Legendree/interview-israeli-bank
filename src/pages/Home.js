@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 
-import AlbumList from '../components/AlbumList';
 import Layout from '../components/Layout';
 import Search from '../components/Search';
 
 import { getAllNewReleases } from '../api/Albums';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setDoneFetching } from '../store/actions/albumsActions';
 import { needAuthorize } from '../utils/Helpers';
 import Pagination from '../components/Pagination';
 import { getItemsBySearch } from '../api/Search';
+import Grid from '../components/Grid';
+import Album from '../components/Album';
 
 export default function Home() {
   const dispatch = useDispatch();
+  const state = useSelector((state) => state);
 
   const [page, setPage] = useState(0);
   const [isEnd, setIsEnd] = useState(false);
@@ -56,7 +58,37 @@ export default function Home() {
           setSearchValue(e.target.value);
         }}
       />
-      <AlbumList />
+      <Grid>
+        {state.albums.isFetching ? (
+          <>
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+            <Album />
+          </>
+        ) : (
+          state.albums.data.map((album) => (
+            <Album
+              key={album.id}
+              id={album.id}
+              img={album.images[0].url}
+              title={album.name}
+              artist={album.artists[0].name}
+            />
+          ))
+        )}
+      </Grid>
       <Pagination
         currentPage={page + 1}
         onClickBack={() => setPage((currPage) => currPage - 1)}

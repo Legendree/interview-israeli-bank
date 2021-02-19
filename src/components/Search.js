@@ -12,7 +12,7 @@ export default function Search({
       <input
         className='search_input'
         type='text'
-        placeholder='Search any album...'
+        placeholder='Search any album, artist...'
         value={value}
         onChange={onChange}
       />

@@ -1,0 +1,58 @@
+.album_details_conatiner {
+  display: flex;
+  margin-top: 45px;
+  width: 1200px;
+  align-items: center;
+}
+.album_details_img_placeholder {
+  width: 180px;
+  height: 180px;
+  border: 5px;
+  background-color: rgb(241, 241, 241);
+}
+
+.album_img {
+  width: 180px;
+  height: 180px;
+  border: 5px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 5px;
+}
+
+.album_details {
+  margin-left: 25px;
+}
+
+.album_details_album_name {
+  font-weight: bold;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+.album_details_artist_name {
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+
+.album_details_title_placeholder {
+  height: 32px;
+  width: 350px;
+  border-radius: 16px;
+  background-color: rgb(241, 241, 241);
+  margin-bottom: 5px;
+}
+
+.album_details_album_placeholder {
+  height: 32px;
+  width: 240px;
+  border-radius: 16px;
+  background-color: rgb(241, 241, 241);
+}
+
+@media only screen and (max-width: 1200px) {
+  .album_details_conatiner {
+    width: calc(100% - 50px);
+  }
+}

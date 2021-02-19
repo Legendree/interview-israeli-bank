@@ -36,3 +36,12 @@ export const getAllNewReleases = async (
 
   return response.data;
 };
+
+export const GetAlbumData = async (id, authToken) => {
+  const response = await axios.get(`https://api.spotify.com/v1/albums/${id}`, {
+    headers: {
+      Authorization: `Bearer ${authToken}`,
+    },
+  });
+  return response.data;
+};
