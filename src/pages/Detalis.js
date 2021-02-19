@@ -66,7 +66,13 @@ export default function Details(props) {
       />
       <Grid>
         {isFetching ? (
-          <></>
+          <>
+            <Track isFetching={isFetching} />
+            <Track isFetching={isFetching} />
+            <Track isFetching={isFetching} />
+            <Track isFetching={isFetching} />
+            <Track isFetching={isFetching} />
+          </>
         ) : (
           state.tracks.data.map((track, index) => (
             <Track
